@@ -1,5 +1,5 @@
 import React from "react";
-import DashboardTemplate from "../components/templates/DahboardTemplate";
+import DashboardTemplate from "../components/templates/DashboardTemplate";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import handleLogout from "../utils/handleLogout";

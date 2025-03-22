@@ -5,7 +5,7 @@ import handleLogout from "../utils/handleLogout";
 import GamePresentersList from "../components/organisms/GamePresentersList";
 import { Button } from "@mui/material";
 import React from "react";
-import DashboardTemplate from "../components/templates/DahboardTemplate";
+import DashboardTemplate from "../components/templates/DashboardTemplate";
 
 const GamePresenters = () => {
   const dispatch: AppDispatch = useDispatch();
