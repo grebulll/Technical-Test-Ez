@@ -1,5 +1,5 @@
-import { TextField } from "@mui/material";
-import React from "react";
+import { TextField } from '@mui/material';
+import React from 'react';
 
 interface InputProps {
   label: string;
@@ -8,8 +8,17 @@ interface InputProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input = ({ label, type = "text", value, onChange }: InputProps) => {
-  return <TextField fullWidth margin="normal" label={label} type={type} value={value} onChange={onChange} />;
+const Input = ({ label, type = 'text', value, onChange }: InputProps) => {
+  return (
+    <TextField
+      fullWidth
+      margin="normal"
+      label={label}
+      type={type}
+      value={value}
+      onChange={onChange}
+    />
+  );
 };
 
 export default Input;

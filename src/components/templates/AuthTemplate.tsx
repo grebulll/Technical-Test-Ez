@@ -1,6 +1,6 @@
-import { Container } from "@mui/material";
-import React from "react";
-import { ReactNode } from "react";
+import { Container } from '@mui/material';
+import React from 'react';
+import { ReactNode } from 'react';
 
 interface AuthTemplateProps {
   children: ReactNode;

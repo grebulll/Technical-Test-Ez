@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
-import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
-import Sidebar from "../organisms/Sidebar";
-import React from "react";
+import { ReactNode } from 'react';
+import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
+import Sidebar from '../organisms/Sidebar';
+import React from 'react';
 
 interface DashboardTemplateProps {
   onLogout: () => void;
@@ -10,7 +10,7 @@ interface DashboardTemplateProps {
 
 const DashboardTemplate = ({ onLogout, children }: DashboardTemplateProps) => {
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: 'flex' }}>
       <Sidebar />
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">

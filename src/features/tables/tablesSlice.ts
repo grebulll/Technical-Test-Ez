@@ -1,37 +1,37 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-interface Table {
-  id: string;
-  name: string;
-}
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IdName } from '../../types/models/IdName';
 
 interface TablesState {
-  tables: Table[];
+  tables: IdName[];
 }
 
 const initialState: TablesState = {
   tables: [
-    { id: "1", name: "Table 1" },
-    { id: "2", name: "Table 2" },
-    { id: "3", name: "Table 3" },
+    { id: '1', name: 'Table 1' },
+    { id: '2', name: 'Table 2' },
+    { id: '3', name: 'Table 3' },
   ],
 };
 
 const tablesSlice = createSlice({
-  name: "tables",
+  name: 'tables',
   initialState,
   reducers: {
-    addTable: (state, action: PayloadAction<Table>) => {
+    addTable: (state, action: PayloadAction<IdName>) => {
       state.tables.push(action.payload);
     },
-    editTable: (state, action: PayloadAction<Table>) => {
-      const index = state.tables.findIndex((table) => table.id === action.payload.id);
+    editTable: (state, action: PayloadAction<IdName>) => {
+      const index = state.tables.findIndex(
+        (table) => table.id === action.payload.id
+      );
       if (index !== -1) {
         state.tables[index] = action.payload;
       }
     },
     deleteTable: (state, action: PayloadAction<string>) => {
-      state.tables = state.tables.filter((table) => table.id !== action.payload);
+      state.tables = state.tables.filter(
+        (table) => table.id !== action.payload
+      );
     },
   },
 });
