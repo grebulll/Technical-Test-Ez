@@ -10,7 +10,7 @@ interface DashboardTemplateProps {
 
 const DashboardTemplate = ({ onLogout, children }: DashboardTemplateProps) => {
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box>
       <Sidebar />
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
@@ -23,7 +23,7 @@ const DashboardTemplate = ({ onLogout, children }: DashboardTemplateProps) => {
             </Button>
           </Toolbar>
         </AppBar>
-        <Box sx={{ padding: 3 }}>{children}</Box>
+        <Box sx={{ padding: 3, width: '100%' }}>{children}</Box>
       </Box>
     </Box>
   );
