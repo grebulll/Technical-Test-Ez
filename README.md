@@ -82,3 +82,15 @@ git clone https://github.com/grebulll/Technical-Test-Ez.git
 cd game-presenters-scheduling
 npm install  # or yarn install
 ```
+
+## **Docker Setup**
+
+Ensure you have [Docker](https://www.docker.com/get-started) installed by running `docker --version`.
+
+To build the Docker image, use the command `docker build -t my-app .`, where `-t my-app` assigns a name to the image, and the `.` specifies the current directory as the build context. Once the image is built, run the container using `docker run -d -p 8080:80 my-app`. The `-d` flag runs the container in detached mode, and `-p 8080:80` maps port **8080** on your local machine to port **80** in the container.
+
+After starting the container, open a web browser and go to `http://localhost:8080`. If the application is running correctly, it should be accessible at that address. To check running containers, use `docker ps`. If you need to stop the container, use `docker stop <container_id>`, replacing `<container_id>` with the actual ID obtained from `docker ps`. To remove the container after stopping it, run `docker rm <container_id>`.
+
+If you want to delete the image, use `docker rmi my-app`. To clean up unused Docker resources, including images and containers, use `docker system prune -a`, but be aware that this will remove all unused images and containers.
+
+If changes are made to the source code, rebuild the image using `docker build -t my-app .` and restart the container with `docker run -d -p 8080:80 my-app`. If a different port is needed, modify the `-p` flag accordingly, for example, `docker run -d -p 3000:80 my-app` to map port **3000** on the host machine to **80** inside the container.
