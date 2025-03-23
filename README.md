@@ -27,6 +27,14 @@ In addition, the application includes:
 
 ## Possible Improvements
 
+### **Permission-based access**
+
+Currently, the application does not have permission-based access for certain screens, components and/or actions.
+
+### **Show Loading Component when loading data**
+
+There is no sort of loading/skeleton components when loading data.
+
 ### **Database Integration**
 
 Currently, the application uses a mock API to manage game presenters and tables. A real database like **Firebase or MongoDB** can be integrated to persist data permanently.
