@@ -25,7 +25,7 @@ In addition, the application includes:
 
 ---
 
-## 🚀 Possible Improvements
+## Possible Improvements
 
 ### **Database Integration**
 
