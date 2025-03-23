@@ -52,7 +52,7 @@ Currently, the application uses a mock API to manage game presenters and tables.
 
 ### **Unit & Integration Testing Improvements**
 
-- Increase **test coverage** using Jest and React Testing Library.
+- Increase **test coverage** using Vitest.
 - Add **end-to-end tests** using Cypress for simulating user interactions.
 
 ---
