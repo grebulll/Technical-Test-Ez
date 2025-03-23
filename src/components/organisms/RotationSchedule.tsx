@@ -33,9 +33,6 @@ const RotationSchedule = () => {
             {tables.map((table) => (
               <TableCell key={table}>{table}</TableCell>
             ))}
-            <TableCell sx={{ fontWeight: 'bold', color: 'red' }}>
-              Break Slot
-            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
