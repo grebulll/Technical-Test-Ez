@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { addTable, editTable } from '../../features/tables/tablesSlice';
 import { Modal, Box, TextField, Button } from '@mui/material';
 import { nanoid } from 'nanoid';
+import { tableSchema } from '../../schemas/validationSchemas';
 
 interface TableModalProps {
   open: boolean;
@@ -16,17 +17,27 @@ const TableModal: React.FC<TableModalProps> = ({
   existingTable,
 }) => {
   const [name, setName] = useState('');
+  const [error, setError] = useState('');
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (existingTable) {
       setName(existingTable.name);
+      setError('');
     } else {
       setName('');
+      setError('');
     }
   }, [existingTable]);
 
   const handleSubmit = () => {
+    const validationResult = tableSchema.safeParse({ name });
+
+    if (!validationResult.success) {
+      setError(validationResult.error.errors[0].message);
+      return;
+    }
+
     if (existingTable) {
       dispatch(editTable({ id: existingTable.id, name }));
     } else {
@@ -51,6 +62,8 @@ const TableModal: React.FC<TableModalProps> = ({
           label="Table Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          error={!!error}
+          helperText={error}
         />
         <Button
           fullWidth

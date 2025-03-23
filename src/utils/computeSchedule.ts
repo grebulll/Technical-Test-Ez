@@ -27,10 +27,6 @@ export const computeRotationSchedule = (
         presenter: availablePresenters[index] || 'Break',
       }));
 
-      assignments.push({
-        table: 'Break Slot',
-        presenter: availablePresenters[tables.length],
-      });
       schedule.push({ time: timeSlot, assignments });
 
       const firstPresenter = availablePresenters.shift();

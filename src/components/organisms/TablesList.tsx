@@ -6,15 +6,16 @@ import { List, ListItem, ListItemText, IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import TableModal from '../organisms/TableModal';
+import { IdName } from '../../types/models/IdName';
 
 const TablesList = () => {
   const tables = useSelector((state: RootState) => state.tables.tables);
   const dispatch = useDispatch();
 
-  const [selectedTable, setSelectedTable] = useState<any | null>(null);
+  const [selectedTable, setSelectedTable] = useState<IdName | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
 
-  const handleEdit = (table: any) => {
+  const handleEdit = (table: IdName) => {
     setSelectedTable(table);
     setModalOpen(true);
   };

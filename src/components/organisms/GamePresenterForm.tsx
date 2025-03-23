@@ -6,6 +6,7 @@ import {
 } from '../../features/gamePresenters/gamePresentersSlice';
 import { TextField, Button, MenuItem } from '@mui/material';
 import { nanoid } from 'nanoid';
+import { gamePresenterSchema } from '../../schemas/validationSchemas';
 
 interface GamePresenterFormProps {
   existingPresenter?: {
@@ -22,14 +23,27 @@ const GamePresenterForm: React.FC<GamePresenterFormProps> = ({
 }) => {
   const dispatch = useDispatch();
   const [name, setName] = useState(existingPresenter?.name || '');
-  const [shift, setShift] = useState(existingPresenter?.shift || 'morning');
+  const [shift, setShift] = useState<'morning' | 'afternoon' | 'night'>(
+    existingPresenter?.shift || 'morning'
+  );
+  const [error, setError] = useState<string>('');
 
   const handleSubmit = () => {
+    const validationResult = gamePresenterSchema.safeParse({ name, shift });
+
+    if (!validationResult.success) {
+      setError(validationResult.error.errors[0].message);
+      return;
+    }
+
+    setError('');
+
     if (existingPresenter) {
       dispatch(editGamePresenter({ id: existingPresenter.id, name, shift }));
     } else {
       dispatch(addGamePresenter({ id: nanoid(), name, shift }));
     }
+
     onClose();
   };
 
@@ -40,6 +54,8 @@ const GamePresenterForm: React.FC<GamePresenterFormProps> = ({
         value={name}
         onChange={(e) => setName(e.target.value)}
         fullWidth
+        error={!!error}
+        helperText={error}
       />
       <TextField
         select
@@ -54,7 +70,7 @@ const GamePresenterForm: React.FC<GamePresenterFormProps> = ({
         <MenuItem value="afternoon">Afternoon</MenuItem>
         <MenuItem value="night">Night</MenuItem>
       </TextField>
-      <Button variant="contained" onClick={handleSubmit}>
+      <Button variant="contained" onClick={handleSubmit} sx={{ mt: 2 }}>
         {existingPresenter ? 'Edit' : 'Add'} Presenter
       </Button>
     </div>

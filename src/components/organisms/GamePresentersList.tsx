@@ -7,6 +7,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import GamePresenterModal from '../organisms/GamePresenterModal';
 import { useDispatch } from 'react-redux';
 import { deleteGamePresenter } from '../../features/gamePresenters/gamePresentersSlice';
+import { GamePresenter } from '../../types/models/GamePresenter';
 
 const GamePresentersList = () => {
   const gamePresenters = useSelector(
@@ -18,7 +19,7 @@ const GamePresentersList = () => {
   const handleDelete = (id: string) => {
     dispatch(deleteGamePresenter(id));
   };
-  const handleEdit = (presenter: any) => {
+  const handleEdit = (presenter: GamePresenter) => {
     setSelectedPresenter(presenter);
     setModalOpen(true);
   };
